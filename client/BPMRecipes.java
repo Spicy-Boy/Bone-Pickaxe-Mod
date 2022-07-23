@@ -19,6 +19,13 @@ public class BPMRecipes extends FCRecipes
 	
 	public static void addToolRecipes() 
 	{
+		CraftingManager.getInstance().getRecipeList().add( new BPMRecipesLeatherCutting() );
+		
+		FCRecipes.AddShapelessRecipe(
+				new ItemStack(BPMDefinitions.flintKnapping, 1,
+				/* this number must match the value within GetProgressiveCraftingMaxDamage */10),
+				new ItemStack[] { new ItemStack(Item.flint), new ItemStack(FCBetterThanWolves.fcItemStone) });
+		
 		FCRecipes.AddShapelessRecipe(new ItemStack(BPMDefinitions.bonePickaxe, 1), new ItemStack[] {
 				new ItemStack(BPMDefinitions.rib), new ItemStack(Item.silk), new ItemStack(Item.stick) });
 		FCRecipes.AddShapelessRecipe(new ItemStack(BPMDefinitions.bonePickaxe, 1),
@@ -40,6 +47,39 @@ public class BPMRecipes extends FCRecipes
 		AddRecipe(new ItemStack(BPMDefinitions.stoneHoeNew, 1),
 				new Object[] { "XIS", " I ", " I ", Character.valueOf('X'), FCBetterThanWolves.fcItemStone,
 						Character.valueOf('I'), Item.stick, Character.valueOf('S'), Item.silk, });
+		
+		FCRecipes.AddShapelessRecipe(new ItemStack(Item.plateLeather, 1),
+				new ItemStack[] { new ItemStack(FCBetterThanWolves.fcItemLeatherCut),
+						new ItemStack(FCBetterThanWolves.fcItemLeatherCut),
+						new ItemStack(FCBetterThanWolves.fcItemLeatherCut),
+						new ItemStack(FCBetterThanWolves.fcItemLeatherCut) });
+		FCRecipes.AddShapelessRecipe(new ItemStack(Item.legsLeather, 1),
+				new ItemStack[] { new ItemStack(FCBetterThanWolves.fcItemLeatherCut),
+						new ItemStack(FCBetterThanWolves.fcItemLeatherCut),
+						new ItemStack(FCBetterThanWolves.fcItemLeatherCut) });
+		FCRecipes.AddShapelessRecipe(new ItemStack(Item.bootsLeather, 1),
+				new ItemStack[] { new ItemStack(FCBetterThanWolves.fcItemLeatherCut),
+						new ItemStack(FCBetterThanWolves.fcItemLeatherCut) });
+		FCRecipes.AddShapelessRecipe(new ItemStack(Item.helmetLeather, 1),
+				new ItemStack[] { new ItemStack(FCBetterThanWolves.fcItemLeatherCut) });
+		
+		FCRecipes.AddShapelessRecipe(new ItemStack(FCBetterThanWolves.fcItemArmorTannedChest, 1),
+				new ItemStack[] { new ItemStack(FCBetterThanWolves.fcItemTannedLeatherCut),
+						new ItemStack(FCBetterThanWolves.fcItemTannedLeatherCut),
+						new ItemStack(FCBetterThanWolves.fcItemTannedLeatherCut),
+						new ItemStack(FCBetterThanWolves.fcItemTannedLeatherCut) });	
+		FCRecipes.AddShapelessRecipe(new ItemStack(FCBetterThanWolves.fcItemArmorTannedLeggings, 1),
+				new ItemStack[] { new ItemStack(FCBetterThanWolves.fcItemTannedLeatherCut),
+						new ItemStack(FCBetterThanWolves.fcItemTannedLeatherCut),
+						new ItemStack(FCBetterThanWolves.fcItemTannedLeatherCut) });
+		FCRecipes.AddShapelessRecipe(new ItemStack(FCBetterThanWolves.fcItemArmorTannedBoots, 1),
+				new ItemStack[] { new ItemStack(FCBetterThanWolves.fcItemTannedLeatherCut),
+						new ItemStack(FCBetterThanWolves.fcItemTannedLeatherCut) });
+		FCRecipes.AddShapelessRecipe(new ItemStack(FCBetterThanWolves.fcItemArmorTannedHelm, 1),
+				new ItemStack[] { new ItemStack(FCBetterThanWolves.fcItemTannedLeatherCut) });
+		
+		
+		
 	}
 	
 	public static void addFoodRecipes()
