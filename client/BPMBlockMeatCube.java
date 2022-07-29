@@ -1,6 +1,6 @@
 package net.minecraft.src;
 
-public class BPMBlockMeatCube extends Block{
+public class BPMBlockMeatCube extends FCBlockFullBlock{
 	
 	protected BPMBlockMeatCube(int par1) {
 		super(par1, Material.ground);
@@ -20,6 +20,14 @@ public class BPMBlockMeatCube extends Block{
     {
     	return true;
     }
+	
+	@Override
+	public boolean DropComponentItemsOnBadBreak( World world, int i, int j, int k, int iMetadata, float fChanceOfDrop )
+	{
+		DropItemsIndividualy( world, i, j, k, FCBetterThanWolves.fcItemRawMysteryMeat.itemID, 8, 0, fChanceOfDrop );
+		
+		return true;
+	}
 	
 	@Override
     public boolean DoesBlockBreakSaw( World world, int i, int j, int k )

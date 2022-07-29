@@ -2,19 +2,20 @@ package net.minecraft.src;
 
 public class BPMRecipes extends FCRecipes
 {
+	private static final int m_iIgnoreMetadata = FCUtilsInventory.m_iIgnoreMetadata;
+	
 	public static final BPMRecipes instance = new BPMRecipes();
 	
 	private BPMRecipes() 
 	{
 	}
 
-	private static final int m_iIgnoreMetadata = FCUtilsInventory.m_iIgnoreMetadata;
-
 	public static void addRecipes() 
 	{
 		addFoodRecipes();
 		addToolRecipes();
 		addBlockRecipes();
+		addMiscRecipes();
 	}
 	
 	public static void addToolRecipes() 
@@ -122,6 +123,11 @@ public class BPMRecipes extends FCRecipes
 		AddCauldronRecipe(new ItemStack(BPMDefinitions.cookedBeefRib, 1),
 				new ItemStack[] { new ItemStack(BPMDefinitions.beefRib, 1), });
 		
+		FCRecipes.AddShapelessRecipe(new ItemStack(FCBetterThanWolves.fcItemMeatCured, 2),
+				new ItemStack[] { new ItemStack(FCBetterThanWolves.fcItemNitre), new ItemStack(FCBetterThanWolves.fcItemNitre),
+						new ItemStack(BPMDefinitions.beefRib) });
+	
+		
 	}
 	
 	public static void addBlockRecipes() 
@@ -134,6 +140,262 @@ public class BPMRecipes extends FCRecipes
 		
 		addPistonPackingRecipe(BPMDefinitions.meatCube,
 				new ItemStack(FCBetterThanWolves.fcItemRawMysteryMeat, 9));
+	}
+	
+    public static void RemoveStokedCauldronRecipe( ItemStack itemStack, ItemStack inputStacks[] )
+    {
+        FCCraftingManagerCauldronStoked.getInstance().RemoveRecipe( itemStack, inputStacks );
+    }
+	
+	public static void addMiscRecipes()
+	{
+        		RemoveStokedCauldronRecipe(
+        			new ItemStack( FCBetterThanWolves.fcItemGlue, 1 ), 
+        			new ItemStack[] {
+        				new ItemStack( Item.leather, 1 ) 
+                } );
+        	
+        		RemoveStokedCauldronRecipe(
+        			new ItemStack( FCBetterThanWolves.fcItemGlue, 1 ), 
+        			new ItemStack[] {
+        				new ItemStack( Item.leather, 1 ) 
+        		} );
+                
+            	RemoveStokedCauldronRecipe(
+        			new ItemStack( FCBetterThanWolves.fcItemGlue, 1 ), 
+        			new ItemStack[] {
+        				new ItemStack( FCBetterThanWolves.fcItemTannedLeather, 1 ) 
+        		} );
+                    
+            	RemoveStokedCauldronRecipe(
+        			new ItemStack( FCBetterThanWolves.fcItemGlue, 1 ), 
+        			new ItemStack[] {
+        				new ItemStack( FCBetterThanWolves.fcItemScouredLeather, 1 ) 
+        		} );
+                
+            	RemoveStokedCauldronRecipe(
+        			new ItemStack( FCBetterThanWolves.fcItemGlue, 1 ), 
+        			new ItemStack[] {
+        				new ItemStack( FCBetterThanWolves.fcItemScouredLeatherCut, 2 ) 
+        		} );
+                
+                RemoveStokedCauldronRecipe(
+        			new ItemStack( FCBetterThanWolves.fcItemGlue, 1 ), 
+        			new ItemStack[] {
+        				new ItemStack( FCBetterThanWolves.fcItemLeatherCut, 2 ) 
+        		} );
+                
+                RemoveStokedCauldronRecipe(
+        			new ItemStack( FCBetterThanWolves.fcItemGlue, 1 ), 
+        			new ItemStack[] {
+        				new ItemStack( FCBetterThanWolves.fcItemTannedLeatherCut, 2 ) 
+        		} );
+                
+                RemoveStokedCauldronRecipe(
+        			new ItemStack( FCBetterThanWolves.fcItemGlue, 1 ), 
+        			new ItemStack[] {
+        				new ItemStack( FCBetterThanWolves.fcItemBelt, 2 ) 
+        		} );
+
+                RemoveStokedCauldronRecipe(
+        			new ItemStack( FCBetterThanWolves.fcItemGlue, 1 ), 
+        			new ItemStack[] {
+        				new ItemStack( FCBetterThanWolves.fcItemStrap, 8 ) 
+        		} );
+        		
+                RemoveStokedCauldronRecipe(
+        			new ItemStack( FCBetterThanWolves.fcItemGlue, 2 ), 
+        			new ItemStack[] {
+        				new ItemStack( Item.helmetLeather, 1, m_iIgnoreMetadata ) 
+        		} );
+                
+                RemoveStokedCauldronRecipe(
+        			new ItemStack( FCBetterThanWolves.fcItemGlue, 4 ), 
+        			new ItemStack[] {
+        				new ItemStack( Item.plateLeather, 1, m_iIgnoreMetadata ) 
+        		} );
+                
+                RemoveStokedCauldronRecipe(
+        			new ItemStack( FCBetterThanWolves.fcItemGlue, 3 ), 
+        			new ItemStack[] {
+        				new ItemStack( Item.legsLeather, 1, m_iIgnoreMetadata ) 
+        		} );
+                
+                RemoveStokedCauldronRecipe(
+        			new ItemStack( FCBetterThanWolves.fcItemGlue, 2 ), 
+        			new ItemStack[] {
+        				new ItemStack( Item.bootsLeather, 1, m_iIgnoreMetadata ) 
+        		} );
+                
+                RemoveStokedCauldronRecipe(
+        			new ItemStack( FCBetterThanWolves.fcItemGlue, 2 ), 
+        			new ItemStack[] {
+        				new ItemStack( Item.saddle, 1 ) 
+        		} );
+        	
+                RemoveStokedCauldronRecipe(
+				new ItemStack( FCBetterThanWolves.fcItemGlue, 2 ), 
+				new ItemStack[] {
+					new ItemStack( Item.leather, 1 ) 
+				} );
+                
+                RemoveStokedCauldronRecipe(
+            			new ItemStack( FCBetterThanWolves.fcItemGlue, 2 ), 
+            			new ItemStack[] {
+            				new ItemStack( FCBetterThanWolves.fcItemArmorTannedHelm, 1, m_iIgnoreMetadata ) 
+            		} );
+                    
+                RemoveStokedCauldronRecipe(
+            			new ItemStack( FCBetterThanWolves.fcItemGlue, 4 ), 
+            			new ItemStack[] {
+            				new ItemStack( FCBetterThanWolves.fcItemArmorTannedChest, 1, m_iIgnoreMetadata ) 
+            		} );
+                    
+                RemoveStokedCauldronRecipe(
+            			new ItemStack( FCBetterThanWolves.fcItemGlue, 3 ), 
+            			new ItemStack[] {
+            				new ItemStack( FCBetterThanWolves.fcItemArmorTannedLeggings, 1, m_iIgnoreMetadata ) 
+            		} );
+                    
+                RemoveStokedCauldronRecipe(
+            			new ItemStack( FCBetterThanWolves.fcItemGlue, 2 ), 
+            			new ItemStack[] {
+            				new ItemStack( FCBetterThanWolves.fcItemArmorTannedBoots, 1, m_iIgnoreMetadata ) 
+            		} );
+                
+                RemoveStokedCauldronRecipe(
+        				new ItemStack( FCBetterThanWolves.fcItemTallow, 1 ), 
+        				new ItemStack[] {
+        					new ItemStack( Item.porkCooked, 1 ) 
+        			} );
+                        
+                RemoveStokedCauldronRecipe(
+        				new ItemStack( FCBetterThanWolves.fcItemTallow, 1 ), 
+        				new ItemStack[] {
+        					new ItemStack( Item.porkRaw, 1 ) 
+        			} );
+	        
+                //new rendering recipes
+    	    AddStokedCauldronRecipe(
+    			new ItemStack( FCBetterThanWolves.fcItemGlue, 2 ), 
+    			new ItemStack[] {
+    				new ItemStack( Item.leather, 1 ) 
+    		} );                
+                
+	        AddStokedCauldronRecipe(
+				new ItemStack( FCBetterThanWolves.fcItemGlue, 2 ), 
+				new ItemStack[] {
+					new ItemStack( FCBetterThanWolves.fcItemTannedLeather, 1 ) 
+			} );  
+	        
+	        AddStokedCauldronRecipe(
+				new ItemStack( FCBetterThanWolves.fcItemGlue, 2 ), 
+				new ItemStack[] {
+					new ItemStack( FCBetterThanWolves.fcItemScouredLeather, 1 ) 
+			} );
+	        AddStokedCauldronRecipe(
+				new ItemStack( FCBetterThanWolves.fcItemGlue, 1 ), 
+				new ItemStack[] {
+					new ItemStack( FCBetterThanWolves.fcItemScouredLeatherCut, 1 ) 
+			} );
+	    
+	        AddStokedCauldronRecipe(
+				new ItemStack( FCBetterThanWolves.fcItemGlue, 1 ), 
+				new ItemStack[] {
+					new ItemStack( FCBetterThanWolves.fcItemLeatherCut, 1 ) 
+			} );
+	        
+	        AddStokedCauldronRecipe(
+				new ItemStack( FCBetterThanWolves.fcItemGlue, 1 ), 
+				new ItemStack[] {
+					new ItemStack( FCBetterThanWolves.fcItemTannedLeatherCut, 1 ) 
+			} );
+	        
+	        AddStokedCauldronRecipe(
+				new ItemStack( FCBetterThanWolves.fcItemGlue, 1 ), 
+				new ItemStack[] {
+					new ItemStack( FCBetterThanWolves.fcItemBelt, 1 ) 
+			} );
+
+	        AddStokedCauldronRecipe(
+				new ItemStack( FCBetterThanWolves.fcItemGlue, 2 ), 
+				new ItemStack[] {
+					new ItemStack( FCBetterThanWolves.fcItemStrap, 8 ) 
+			} );
+			
+			
+	        AddStokedCauldronRecipe(
+				new ItemStack( FCBetterThanWolves.fcItemGlue, 1 ), 
+				new ItemStack[] {
+					new ItemStack( Item.helmetLeather, 1, m_iIgnoreMetadata ) 
+			} );
+	        
+	        AddStokedCauldronRecipe(
+				new ItemStack( FCBetterThanWolves.fcItemGlue, 4 ), 
+				new ItemStack[] {
+					new ItemStack( Item.plateLeather, 1, m_iIgnoreMetadata ) 
+			} );
+	        
+	        AddStokedCauldronRecipe(
+				new ItemStack( FCBetterThanWolves.fcItemGlue, 3 ), 
+				new ItemStack[] {
+					new ItemStack( Item.legsLeather, 1, m_iIgnoreMetadata ) 
+			} );
+	        
+	        AddStokedCauldronRecipe(
+				new ItemStack( FCBetterThanWolves.fcItemGlue, 2 ), 
+				new ItemStack[] {
+					new ItemStack( Item.bootsLeather, 1, m_iIgnoreMetadata ) 
+			} );
+	        
+	        AddStokedCauldronRecipe(
+				new ItemStack( FCBetterThanWolves.fcItemGlue, 2 ), 
+				new ItemStack[] {
+					new ItemStack( FCBetterThanWolves.fcItemStrap, 8 ) 
+			} );
+			
+			//tanned
+	        AddStokedCauldronRecipe(
+				new ItemStack( FCBetterThanWolves.fcItemGlue, 1 ), 
+				new ItemStack[] {
+					new ItemStack( FCBetterThanWolves.fcItemArmorTannedHelm, 1, m_iIgnoreMetadata ) 
+			} );
+	        
+	        AddStokedCauldronRecipe(
+				new ItemStack( FCBetterThanWolves.fcItemGlue, 4 ), 
+				new ItemStack[] {
+					new ItemStack( FCBetterThanWolves.fcItemArmorTannedChest, 1, m_iIgnoreMetadata ) 
+			} );
+	        
+	        AddStokedCauldronRecipe(
+				new ItemStack( FCBetterThanWolves.fcItemGlue, 3 ), 
+				new ItemStack[] {
+					new ItemStack( FCBetterThanWolves.fcItemArmorTannedLeggings, 1, m_iIgnoreMetadata ) 
+			} );
+	        
+	        AddStokedCauldronRecipe(
+				new ItemStack( FCBetterThanWolves.fcItemGlue, 2 ), 
+				new ItemStack[] {
+					new ItemStack( FCBetterThanWolves.fcItemArmorTannedBoots, 1, m_iIgnoreMetadata ) 
+			} );
+	        
+	        AddStokedCauldronRecipe(
+				new ItemStack( FCBetterThanWolves.fcItemGlue, 4 ), //changed to 4 
+				new ItemStack[] {
+					new ItemStack( Item.saddle, 1 ) 
+			} );
+	        
+	        AddStokedCauldronRecipe(
+					new ItemStack( FCBetterThanWolves.fcItemTallow, 2 ), 
+					new ItemStack[] {
+						new ItemStack( Item.porkCooked, 1 ) 
+				} );
+	                
+	        AddStokedCauldronRecipe(
+					new ItemStack( FCBetterThanWolves.fcItemTallow, 2 ), 
+					new ItemStack[] {
+						new ItemStack( Item.porkRaw, 1 ) 
+				} );
 	}
 	
 	

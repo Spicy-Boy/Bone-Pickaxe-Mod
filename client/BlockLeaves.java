@@ -320,27 +320,29 @@ public class BlockLeaves extends BlockLeavesBase
     //AARON changed to include blades for branch harvesting
     public void harvestBlock(World par1World, EntityPlayer par2EntityPlayer, int par3, int par4, int par5, int par6)
     {
-        if (!par1World.isRemote && par2EntityPlayer.getCurrentEquippedItem() != null && par2EntityPlayer.getCurrentEquippedItem().getItem() instanceof FCItemShears)
+        if (!par1World.isRemote && par2EntityPlayer.getCurrentEquippedItem() != null) 
         {
+        	
+        	if (par2EntityPlayer.getCurrentEquippedItem().getItem() instanceof FCItemShears)
+        	{
             par2EntityPlayer.addStat(StatList.mineBlockStatArray[this.blockID], 1);
             this.dropBlockAsItem_do(par1World, par3, par4, par5, new ItemStack(Block.leaves.blockID, 1, par6 & 3));
-        }
-        else if (
-        		par2EntityPlayer.getCurrentEquippedItem().getItem() instanceof BPMItemKnife
-          		//par2EntityPlayer.getCurrentEquippedItem().itemID == BPMDefinitions.flintKnife.itemID
-                //|| par2EntityPlayer.getCurrentEquippedItem().itemID == BPMDefinitions.ironKnife.itemID
-        		|| par2EntityPlayer.getCurrentEquippedItem().getItem() instanceof FCItemAxe
-        		) 
-        {
-        	if (par1World.rand.nextInt(10) == 0)
-            {
+        	}
+        	else if (par2EntityPlayer.getCurrentEquippedItem().getItem() instanceof BPMItemKnife
+        			|| par2EntityPlayer.getCurrentEquippedItem().getItem() instanceof FCItemAxe)
+        	{
+    				if (par1World.rand.nextInt(10) == 0) 
+    				{
 
-                this.dropBlockAsItem_do(par1World, par3, par4, par5, new ItemStack(Block.sapling.blockID, 1, par6 & 3));
-            }
-            else
-            {
-            	this.dropBlockAsItem_do(par1World, par3, par4, par5, new ItemStack(BPMDefinitions.branch.itemID, 1, 0));
-            }
+    					this.dropBlockAsItem_do(par1World, par3, par4, par5,
+    							new ItemStack(Block.sapling.blockID, 1, par6 & 3));
+    				} 
+    				else 
+    				{
+    					this.dropBlockAsItem_do(par1World, par3, par4, par5,
+    							new ItemStack(BPMDefinitions.branch.itemID, 1, 0));
+    				}
+        	}
         }
         else
         {
