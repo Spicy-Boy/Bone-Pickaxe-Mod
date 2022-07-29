@@ -20,10 +20,12 @@ public class BPMRecipes extends FCRecipes
 	public static void addToolRecipes() 
 	{
 		CraftingManager.getInstance().getRecipeList().add( new BPMRecipesLeatherCutting() );
+		CraftingManager.getInstance().getRecipeList().add( new BPMRecipesRibCutting() );
+		
+		AddMillStoneRecipe( new ItemStack( Item.dyePowder, 6, 15 ), new ItemStack( BPMDefinitions.rib, 1) );
 		
 		FCRecipes.AddShapelessRecipe(
-				new ItemStack(BPMDefinitions.flintKnapping, 1,
-				/* this number must match the value within GetProgressiveCraftingMaxDamage */10),
+				new ItemStack(BPMDefinitions.flintKnapping, 1),
 				new ItemStack[] { new ItemStack(Item.flint), new ItemStack(FCBetterThanWolves.fcItemStone) });
 		
 		FCRecipes.AddShapelessRecipe(new ItemStack(BPMDefinitions.bonePickaxe, 1), new ItemStack[] {
@@ -78,6 +80,36 @@ public class BPMRecipes extends FCRecipes
 		FCRecipes.AddShapelessRecipe(new ItemStack(FCBetterThanWolves.fcItemArmorTannedHelm, 1),
 				new ItemStack[] { new ItemStack(FCBetterThanWolves.fcItemTannedLeatherCut) });
 		
+		FCRecipes.AddShapelessRecipe(new ItemStack(FCBetterThanWolves.fcBlockTorchFiniteUnlit, 1),
+				new ItemStack[] { new ItemStack(Item.coal), new ItemStack(BPMDefinitions.branch) });
+
+		FCRecipes.AddShapelessRecipe(new ItemStack(FCBetterThanWolves.fcItemFireStarterSticks, 1), new ItemStack[] {
+				new ItemStack(BPMDefinitions.branch), new ItemStack(BPMDefinitions.branch) });
+		FCRecipes.AddShapelessRecipe(new ItemStack(FCBetterThanWolves.fcItemFireStarterSticks, 1),
+				new ItemStack[] { new ItemStack(BPMDefinitions.branch), new ItemStack(Item.stick) });
+		FCRecipes.AddShapelessRecipe(new ItemStack(FCBetterThanWolves.fcItemChiselWood, 1),
+				new ItemStack[] { new ItemStack(BPMDefinitions.branch) });
+
+		FCRecipes.AddShapelessRecipe(new ItemStack(FCBetterThanWolves.fcItemFireStarterBow, 1),
+				new ItemStack[] { new ItemStack(BPMDefinitions.branch), new ItemStack(BPMDefinitions.branch),
+						new ItemStack(Item.silk) });
+		FCRecipes.AddShapelessRecipe(new ItemStack(FCBetterThanWolves.fcItemFireStarterBow, 1), new ItemStack[] {
+				new ItemStack(BPMDefinitions.branch), new ItemStack(Item.stick), new ItemStack(Item.silk) });
+
+		// all them recipes be like (LMAO!!! CAMPFIRE!!!!)
+		FCRecipes.AddShapelessRecipe(new ItemStack(FCBetterThanWolves.fcBlockCampfireUnlit, 1),
+				new ItemStack[] { new ItemStack(BPMDefinitions.branch), new ItemStack(Item.stick),
+						new ItemStack(Item.stick), new ItemStack(Item.stick) });
+		FCRecipes.AddShapelessRecipe(new ItemStack(FCBetterThanWolves.fcBlockCampfireUnlit, 1),
+				new ItemStack[] { new ItemStack(BPMDefinitions.branch), new ItemStack(BPMDefinitions.branch),
+						new ItemStack(Item.stick), new ItemStack(Item.stick) });
+		FCRecipes.AddShapelessRecipe(new ItemStack(FCBetterThanWolves.fcBlockCampfireUnlit, 1),
+				new ItemStack[] { new ItemStack(BPMDefinitions.branch), new ItemStack(BPMDefinitions.branch),
+						new ItemStack(BPMDefinitions.branch), new ItemStack(Item.stick) });
+		FCRecipes.AddShapelessRecipe(new ItemStack(FCBetterThanWolves.fcBlockCampfireUnlit, 1),
+				new ItemStack[] { new ItemStack(BPMDefinitions.branch), new ItemStack(BPMDefinitions.branch),
+						new ItemStack(BPMDefinitions.branch), new ItemStack(BPMDefinitions.branch) });
+		
 		
 		
 	}
@@ -96,6 +128,12 @@ public class BPMRecipes extends FCRecipes
 	{
 		AddRecipe(new ItemStack(FCBetterThanWolves.fcBlockWorkbench, 1), new Object[] // ITS BACK BABY
 		{ "###", "#X#", "###", '#', Block.planks, 'X', Item.ingotIron });
+		
+		FCRecipes.addSawRecipe(new ItemStack(FCBetterThanWolves.fcItemRawMysteryMeat, 9),
+				BPMDefinitions.meatCube);
+		
+		addPistonPackingRecipe(BPMDefinitions.meatCube,
+				new ItemStack(FCBetterThanWolves.fcItemRawMysteryMeat, 9));
 	}
 	
 	

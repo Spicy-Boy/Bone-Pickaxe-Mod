@@ -1,6 +1,7 @@
 package net.minecraft.src;
 
-public class BPMItemLeatherCutting extends FCItemCraftingProgressive {
+public class BPMItemLeatherCutting extends FCItemCraftingProgressive 
+{
 
 	static int internalBladeDamage;
 	

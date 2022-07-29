@@ -12,11 +12,15 @@ public class BPMDefinitions {
 		id_deathClub = 20007,
 		id_stoneHoeNew = 20008,
 		id_flintKnapping = 20009,
-		id_leatherCutting = 20010
+		id_leatherCutting = 20010,
+		id_ribCutting = 20011,
+		id_branch = 20012
 		;
 	
 	private static final int
-		id_meatCube = 2000
+		id_meatCube = 2000,
+		id_branchBlock = 2001,
+		id_timeCube = 2002
 		;
 		
 	public static Item bonePickaxe;
@@ -27,6 +31,18 @@ public class BPMDefinitions {
 	public static Item flintKnife;
 	public static Item flintKnapping;
 	public static Item leatherCutting;
+	public static Item ribCutting;
+	public static Item branch;
+	
+	public static Block branchBlock;
+	public static Block timeCube;
+	public static Block meatCube;
+	
+	public static void addTileEntityDefinitions()
+	{
+		addTileEntityDefsMapping();
+
+	}
 	
 	public static void addDefinitions() 
 	{
@@ -39,6 +55,25 @@ public class BPMDefinitions {
 		flintKnife = new BPMItemFlintKnife(id_flintKnife - 256);
 		flintKnapping = new BPMItemFlintKnapping(id_flintKnapping - 256);
 		leatherCutting = new BPMItemLeatherCutting(id_leatherCutting - 256);
+		ribCutting = new BPMItemRibCutting(id_ribCutting - 256);
+		branch = new BPMItemBranch(id_branch - 256);
+		
+		FCBetterThanWolves.fcBlockHempCrop = Block.replaceBlock(FCBetterThanWolves.fcBlockHempCrop.blockID, BPMBlockHempCrop.class, BPM.instance);
 	
+		meatCube = new BPMBlockMeatCube(id_meatCube);
+		Item.itemsList[meatCube.blockID] = new ItemBlock(meatCube.blockID - 256);
+		
+		branchBlock = new BPMBlockBranch(id_branchBlock);
+		Item.itemsList[branchBlock.blockID] = new ItemBlock(branchBlock.blockID - 256); 
 	}
+	
+	private static void addTileEntityDefsMapping()
+	{
+		timeCube = new BPMBlockTimeCube(id_timeCube, null);
+		Item.itemsList[timeCube.blockID] = new ItemBlock(timeCube.blockID - 256)
+				.setMaxStackSize( 1 );
+		
+		TileEntity.addMapping(BPMBlockTimeCube.class, "timeCube");
+	}
+
 }
