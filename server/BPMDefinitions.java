@@ -18,9 +18,9 @@ public class BPMDefinitions {
 		;
 	
 	private static final int
-		id_meatCube = 2600,
-		id_branchBlock = 2601,
-		id_timeCube = 2602
+		id_meatCube = 2001,
+		id_branchBlock = 2002,
+		id_timeCube = 2003
 		;
 		
 	public static Item bonePickaxe;
