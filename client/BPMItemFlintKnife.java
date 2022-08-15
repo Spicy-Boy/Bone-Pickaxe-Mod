@@ -21,7 +21,7 @@ public class BPMItemFlintKnife extends BPMItemKnife
 	
     public float getStrVsBlock( ItemStack stack, World world, Block block, int i, int j, int k )
     {
-    	float fStrength = 0;//super.getStrVsBlock( stack, world, block, i, j, k );
+    	float fStrength = 1;//super.getStrVsBlock( stack, world, block, i, j, k );
     	
     	if ( block.blockID == Block.web.blockID 
     			|| block.blockID == FCBetterThanWolves.fcBlockWeb.blockID)

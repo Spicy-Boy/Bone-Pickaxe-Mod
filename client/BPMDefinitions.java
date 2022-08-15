@@ -33,6 +33,7 @@ public class BPMDefinitions {
 	public static Item leatherCutting;
 	public static Item ribCutting;
 	public static Item branch;
+	public static Item deathClub;
 	
 	public static Block branchBlock;
 	public static Block timeCube;
@@ -57,6 +58,7 @@ public class BPMDefinitions {
 		leatherCutting = new BPMItemLeatherCutting(id_leatherCutting - 256);
 		ribCutting = new BPMItemRibCutting(id_ribCutting - 256);
 		branch = new BPMItemBranch(id_branch - 256);
+		deathClub = new BPMItemDeathClub(id_deathClub - 256);
 		
 		FCBetterThanWolves.fcBlockHempCrop = Block.replaceBlock(FCBetterThanWolves.fcBlockHempCrop.blockID, BPMBlockHempCrop.class, BPM.instance);
 	
