@@ -111,7 +111,9 @@ public class BPMRecipes extends FCRecipes
 				new ItemStack[] { new ItemStack(BPMDefinitions.branch), new ItemStack(BPMDefinitions.branch),
 						new ItemStack(BPMDefinitions.branch), new ItemStack(BPMDefinitions.branch) });
 		
-		
+
+		FCRecipes.AddShapelessRecipe(new ItemStack(BPMDefinitions.deathClub, 1), new ItemStack[] {
+				new ItemStack(BPMDefinitions.rib), new ItemStack(BPMDefinitions.rib), new ItemStack(Item.stick), new ItemStack(Item.stick) });
 		
 	}
 	

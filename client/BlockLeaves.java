@@ -263,6 +263,12 @@ public class BlockLeaves extends BlockLeavesBase
     {
         return Block.sapling.blockID;
     }
+    
+    //AARON added this to allow for branches to appear from decaying leaves
+    public int idDroppedExceptThisTimeItIsAStick(int par1, Random par2Random, int par3)
+    {
+    	return BPMDefinitions.branch.itemID;
+    }
 
     /**
      * Drops the block items with a specified chance of dropping the specified items

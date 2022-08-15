@@ -57,6 +57,10 @@ public class BPM extends FCAddOn
             int zPos = z + rand.nextInt(16) + 8;
             this.branchGen.generate(world, rand, xPos, yPos, zPos);
         }
+	}	@Override
+	public void PostInitialize() {
+		//FCBetterThanWolves.fcBlockHempCrop.blockID, BPMBlockHempCrop.class, BPM.instance
+		Block.replaceBlock(FCBetterThanWolves.fcBlockHempCrop.blockID, BPMBlockHempCrop.class, new String[] {"Stuff & Things"}, instance);
 	}
 
 }
