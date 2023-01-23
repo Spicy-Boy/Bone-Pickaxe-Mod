@@ -30,6 +30,8 @@ public class BPM extends FCAddOn
     	BPMRecipes.addRecipes();
 		
     	FCAddOnHandler.LogMessage(this.getName() + " uwu~ you play BTW???");
+    	
+    	FCAddOnHandler.LogMessage(this.getName() + "isDLInstalled " + BPMDynamicLightIntegration.isDLInstalled());
 
 	}
 

@@ -13,6 +13,8 @@ NOTE TO AARON:
 
 CHANGELOG V2.0
 
+- Added Hiracho's Dynamic Lighting addon for the sake of the server modpack!
+
 TODO- Added Yany's Hardcore Hell from Yany's Stuff&Things Addon
         >https://www.sargunster.com/btwforum/viewtopic.php?t=9873&start=25
         >Big shout out to Yany, creator of amazing addons
@@ -111,6 +113,7 @@ FCBlockWeb
 V2.0
 EntityPlayerMP
 FCBlockLeaves (again to change branch drops)
+FCBlockTorchBase (Hiracho addon)
 
 BASE CLASS OVERRIDES:
 FCBlockHempCrop -> BPMBlockHempCrop
