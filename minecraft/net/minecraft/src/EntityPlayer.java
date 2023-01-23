@@ -2522,8 +2522,10 @@ public abstract class EntityPlayer extends EntityLiving implements ICommandSende
 	
 	@Override
     public boolean CanJump()
-    {		
-    	return health > 4 && foodStats.getFoodLevel() > 12 && (int)foodStats.getSaturationLevel() < 18;
+    {
+		//AARON changed: original values are health 4 and FoodLevel 12
+    	return health > 2 && foodStats.getFoodLevel() > 6 && (int)foodStats.getSaturationLevel() < 18;
+//    	return health > 4 && foodStats.getFoodLevel() > 12 && (int)foodStats.getSaturationLevel() < 18;
     }
 	
 	@Override

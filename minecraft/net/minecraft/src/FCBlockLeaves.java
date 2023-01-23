@@ -60,17 +60,42 @@ public class FCBlockLeaves extends BlockLeaves
             }            
         }
         
-        //AARON added this if block in order to allow random leaf drop
-        if ( !world.isRemote )
+//        //AARON added this if block in order to allow random leaf drop
+//		  //AARON commented this out on Sock's behalf
+//        if ( !world.isRemote )
+//        {
+//            
+//            int iChanceOfSaplingDrop = 15;
+//
+//            if ( world.rand.nextInt( iChanceOfSaplingDrop ) == 0 )
+//            {
+//
+//                int iIdDropped = idDroppedExceptThisTimeItIsAStick( iMetadata, world.rand, iFortuneModifier );
+//                
+//                dropBlockAsItem_do( world, i, j, k, new ItemStack( iIdDropped, 1, 0) );
+//            }            
+//        }
+    }
+    
+    //AARON added this to satisfy Sock's desire to be creative
+    @Override
+    public void onBlockHarvested(World par1World, int par2, int par3, int par4, int par5,
+    		EntityPlayer par6EntityPlayer) {
+    	// TODO Auto-generated method stub
+    	super.onBlockHarvested(par1World, par2, par3, par4, par5, par6EntityPlayer);
+    	int iMetadata = par1World.getBlockMetadata(par2, par3, par4);
+    	
+    	if ( !par1World.isRemote )
         {
             
             int iChanceOfSaplingDrop = 15;
 
-            if ( world.rand.nextInt( iChanceOfSaplingDrop ) == 0 )
+            if ( par1World.rand.nextInt( iChanceOfSaplingDrop ) == 0 )
             {
-                int iIdDropped = idDroppedExceptThisTimeItIsAStick( iMetadata, world.rand, iFortuneModifier );
+            	//AARON commented this out on Sock's behalf
+                int iIdDropped = idDroppedExceptThisTimeItIsAStick( iMetadata, par1World.rand, 0 );
                 
-                dropBlockAsItem_do( world, i, j, k, new ItemStack( iIdDropped, 1, 0) );
+                dropBlockAsItem_do( par1World, par2, par3, par4, new ItemStack( iIdDropped, 1, 0) );
             }            
         }
     }

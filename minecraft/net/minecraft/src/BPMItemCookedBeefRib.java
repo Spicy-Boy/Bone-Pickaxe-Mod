@@ -5,7 +5,7 @@ public class BPMItemCookedBeefRib extends ItemFood
 	
 	public BPMItemCookedBeefRib (int iItemID) 
 	{
-		super (iItemID, 6, 0.25F, false, false);
+		super (iItemID, /*NORMAL VALUE IS 6*/-9, 0.25F, false, false);
 		
     	SetIncineratedInCrucible();
     	setUnlocalizedName( "SuperBTWItemCookedCowRib" );

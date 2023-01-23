@@ -53,11 +53,11 @@ public class BPMItemFlintKnapping extends Item
     	
     	int var6 = this.getMaxItemUseDuration(itemStack) - iTicksInUseRemaining;
     	
-    	if (var6 < 5)
+    	if (var6 <= 5)
     	{
     		return;
     	}
-        if (var6 < 20 || var6 > 35)
+        if (var6 < 20 || var6 >= 35)
         {
         	badHits++;
         	//System.out.println("Uh oh! bad hits: " + badHits);
