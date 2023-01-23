@@ -115,6 +115,12 @@ public abstract class EntityPlayer extends EntityLiving implements ICommandSende
      * An instance of a fishing rod's hook. If this isn't null, the icon image of the fishing rod is slightly different
      */
     public EntityFishHook fishEntity = null;
+    
+    //AARON added this for hiracho dynamic compatibility
+    //Dynamic Lights TODO
+    private int dynamicLightUpdateTimer=0;
+    public boolean isholdingtorch =false;
+    //AARON
 
     public EntityPlayer(World par1World)
     {
@@ -368,7 +374,56 @@ public abstract class EntityPlayer extends EntityLiving implements ICommandSende
         // FCMOD: Added
         UpdateModStatusVariables();
         // END FCMOD
+        
+        //AARON added for Hiracho compat
+        if (FCUtilsReflection.isObfuscated() && BPMDynamicLightIntegration.isDLInstalled())
+        {
+            //Dynamic Lights TODO
+            if (!worldObj.isRemote)
+            {
+            	dynamicLightUpdateTimer++;
+            	if (isholdingtorch ||dynamicLightUpdateTimer >9)
+            	{
+            		ItemStack heldItem = getHeldItem();
+            		dynamicLightUpdateTimer=0;
+            		if (heldItem!= null && isDynamicLightSource(heldItem.itemID))
+            		{
+            			isholdingtorch =true;
+//            			System.out.println(this + " is holding " + getHeldItem());
+            		}
+            		else
+            		{
+            			isholdingtorch =false;
+            		}
+            		
+                    if (isholdingtorch) 
+                    {
+                        FCUtilsBlockPos lightpos = new FCUtilsBlockPos(MathHelper.floor_double( posX ), 
+                        		MathHelper.floor_double(boundingBox.maxY), MathHelper.floor_double( posZ));
+                        if (worldObj.getBlockId(lightpos.i, lightpos.j, lightpos.k)==0)
+                        {
+                        worldObj.setBlock(lightpos.i, lightpos.j, lightpos.k, DLMain.lightsourceinvis.blockID,0 ,2);
+                        worldObj.scheduleBlockUpdate(lightpos.i, lightpos.j, lightpos.k, DLMain.lightsourceinvis.blockID, DLLightSource.lightSourceTickRate);
+                        }
+                    }
+            	}
+            }
+        }
+        //AARON
     }
+    
+    //AARON added this for hiracho compat :OOOOOOO
+    public boolean isDynamicLightSource(int itemID)
+    {
+//    	Block.blocksList[itemID].lightValue>0 TODO
+    	if(itemID==FCBetterThanWolves.fcBlockTorchNetherBurning.blockID || itemID==FCBetterThanWolves.fcBlockTorchFiniteBurning.blockID)
+    	{
+    		return true;
+    	}
+    	
+    	return false;
+    }
+    //AARON
 
     /**
      * Return the amount of time this entity should stay in a portal before being transported.
