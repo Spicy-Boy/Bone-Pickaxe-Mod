@@ -1,0 +1,3 @@
+TODO: Remove string from bedroll recipe (wool + knit + knit)
+TODO: Add config/side mod to placing tools (the old way, rather than ctrl+click
+TODO: Add Pet Sounds CD

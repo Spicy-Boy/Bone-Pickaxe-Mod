@@ -7,13 +7,16 @@ Started 2.0 update 5 January, 2023
 NOTE TO AARON: 
                 
                 :D
-                
-                
-                Hi Aaron, don't forget to delete DLMain.java, DLLightSource.java before releasing!! (look up gitignore)
 
 CHANGELOG V2.0
 
 - Added Hiracho's Dynamic Lighting addon for the sake of the server modpack!
+        > Torches will emit light when held in the hand. Perfect for exploring the deep places of the world!
+
+TODO- Added a new bedroll recipe: wool knit + wool knit + wool (unknit) for stuffing
+        >This is important for large multiplayer servers so that is is easier for players at all tech levels to coordinate rests.
+
+TODO- Added config/side mod to placing tools (the old way, rather than ctrl+click
 
 TODO- Added Yany's Hardcore Hell from Yany's Stuff&Things Addon
         >https://www.sargunster.com/btwforum/viewtopic.php?t=9873&start=25
@@ -21,10 +24,15 @@ TODO- Added Yany's Hardcore Hell from Yany's Stuff&Things Addon
         
 TODO- Add config for branch dropping maybe? Or just disable it, who knows
 
-- Tweaked hunger system so that the player can jump and move around longer before starving.
-- Tweaked hunger system so that the player starves slower in general 
+- Tweaked hunger system so that the player can jump and move around longer before being imobilized by hunger.
+- Tweaked hunger system so that the player starves more slowly in general. Same with health. You are on your feet a tad bit longer.
+
+
+
 TODO: DETECT IF DAWN MOD IS INSTALLED TO PREVENT CRASH
         > Check SCDecoIntegration.java
+        
+TODO: Add Pet Sounds CD
 
 ***
 CHANGELOG V 1.2
