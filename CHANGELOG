@@ -10,29 +10,40 @@ NOTE TO AARON:
 
 CHANGELOG V2.0
 
-- Added Hiracho's Dynamic Lighting addon for the sake of the server modpack!
-        > Torches will emit light when held in the hand. Perfect for exploring the deep places of the world!
+TODO: - Added a new bedroll recipe: wool knit + wool knit + wool (unknit) / 2x feather for stuffing
 
-TODO- Added a new bedroll recipe: wool knit + wool knit + wool (unknit) for stuffing
-        >This is important for large multiplayer servers so that is is easier for players at all tech levels to coordinate rests.
+TODO: - Fixed/backported a fix for a bug that caused fireworks to crash the game.
 
-TODO- Added config/side mod to placing tools (the old way, rather than ctrl+click
+TODO: - Fixed the lighting bug that caused hampers and such to look completely pitch black (thanks Dawn, Hiracho, and the CE team!!!)
 
-TODO- Added Yany's Hardcore Hell from Yany's Stuff&Things Addon
-        >https://www.sargunster.com/btwforum/viewtopic.php?t=9873&start=25
-        >Big shout out to Yany, creator of amazing addons
-        
-TODO- Add config for branch dropping maybe? Or just disable it, who knows
+TODO: - Fixed a game bricking bug that created a ticking tile entity or something when using a piston shovel to pick up ash.
 
-- Tweaked hunger system so that the player can jump and move around longer before being imobilized by hunger.
-- Tweaked hunger system so that the player starves more slowly in general. Same with health. You are on your feet a tad bit longer.
+TODO: - Fixed server acceleration related to sleeping and offline players
+TODO: - FIXED always facing north
+TODO: - HARDCORE SOAKED: Can't sleep if being hit by rain
+TODO: - Fixed waking up around corners and sleeping through walls
 
-
+TODO: - Added config/side mod to placing tools (the old way, rather than ctrl+click
 
 TODO: DETECT IF DAWN MOD IS INSTALLED TO PREVENT CRASH
         > Check SCDecoIntegration.java
         
+
+- Added Hiracho's Dynamic Lighting addon for the sake of the server modpack!
+        > Torches will emit light when held in the hand. Perfect for exploring the deep places of the world!
+- Tweaked hunger system so that the player can jump and move around longer before being imobilized by hunger. (can jump during famished)
+- Tweaked hunger system so that the player starves to death when hunger bar is empty more slowly in general. 
+
+***
+DISCARDED IDEAS FROM V 2.0:
+
 TODO: Add Pet Sounds CD
+
+TODO- Add config for branch dropping maybe? Or just disable it, who knows
+
+TODO- Added Yany's Hardcore Hell from Yany's Stuff&Things Addon
+        >https://www.sargunster.com/btwforum/viewtopic.php?t=9873&start=25
+        >Big shout out to Yany, creator of amazing addons
 
 ***
 CHANGELOG V 1.2
