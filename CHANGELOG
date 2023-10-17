@@ -8,6 +8,18 @@ NOTE TO AARON:
                 
                 :D
 
+#For sleep integration:
+EntityPlayer
+GuiSleepMP
+MinecraftServer
+WorldServer
+Minecraft
+BlockBed
+EnumStatus (hardcore soaked)
+
+CHANGES for BED FIX
+FCBlockBedBase
+
 CHANGELOG V2.0
 
 TODO: - Added a new bedroll recipe: wool knit + wool knit + wool (unknit) / 2x feather for stuffing
@@ -28,6 +40,7 @@ TODO: - Added config/side mod to placing tools (the old way, rather than ctrl+cl
 TODO: DETECT IF DAWN MOD IS INSTALLED TO PREVENT CRASH
         > Check SCDecoIntegration.java
         
+TODO: SEVERELY LOWER THE DROP RATE BRANCHES FROM LEAVES
 
 - Added Hiracho's Dynamic Lighting addon for the sake of the server modpack!
         > Torches will emit light when held in the hand. Perfect for exploring the deep places of the world!
