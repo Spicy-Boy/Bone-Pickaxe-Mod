@@ -9,17 +9,7 @@ NOTE TO AARON:
                 
                 :D
 
-#For sleep integration:
-EntityPlayer
-GuiSleepMP
-MinecraftServer
-WorldServer
-Minecraft
-BlockBed
-EnumStatus (hardcore soaked)
 
-CHANGES for BED FIX
-FCBlockBedBase
 
 CHANGELOG V2.0
 
@@ -31,22 +21,25 @@ TODO: - Fixed the lighting bug that caused hampers and such to look completely p
 
 TODO: - Fixed a game bricking bug that created a ticking tile entity or something when using a piston shovel to pick up ash.
 
-TODO: - Fixed server acceleration related to sleeping and offline players
-TODO: - FIXED always facing north
-TODO: - HARDCORE SOAKED: Can't sleep if being hit by rain
-TODO: - Fixed waking up around corners and sleeping through walls
-
 TODO: - Added config/side mod to placing tools (the old way, rather than ctrl+click
 
 TODO: DETECT IF DAWN MOD IS INSTALLED TO PREVENT CRASH
         > Check SCDecoIntegration.java
-        
-TODO: SEVERELY LOWER THE DROP RATE BRANCHES FROM LEAVES
+
+- Added Hardcore Soaked, a change that makes sleeping under a rain storm less possible
 
 - Added Hiracho's Dynamic Lighting addon for the sake of the server modpack!
         > Torches will emit light when held in the hand. Perfect for exploring the deep places of the world!
+
+- Changed (reduced) the chance of branches dropping from decaying leaves significantly. From my brief tests, a tree may drop just two branches now
+
 - Tweaked hunger system so that the player can jump and move around longer before being imobilized by hunger. (can jump during famished)
+
 - Tweaked hunger system so that the player starves to death when hunger bar is empty more slowly in general. 
+        
+- Tweaked sleeping code internally to backport bug fixes from newer versions of CE
+
+- Tweaked the position of the wake up button (nudged upward) so that status can be viewed while laying down
 
 ***
 DISCARDED IDEAS FROM V 2.0:
@@ -147,6 +140,13 @@ V2.0
 EntityPlayerMP
 FCBlockLeaves (again to change branch drops)
 FCBlockTorchBase (Hiracho addon)
+(CHANGES for BED FIX below vvv)
+MinecraftServer
+BlockBed
+EntityPlayer
+EnumStatus
+FCBlockBedBase
+GuiSleepMP
 
 BASE CLASS OVERRIDES:
 FCBlockHempCrop -> BPMBlockHempCrop

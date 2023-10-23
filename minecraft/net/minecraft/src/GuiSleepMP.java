@@ -9,7 +9,10 @@ public class GuiSleepMP extends GuiChat
     {
         super.initGui();
         StringTranslate var1 = StringTranslate.getInstance();
+//        this.buttonList.add(new GuiButton(1, this.width / 2 - 100, this.height - 70, var1.translateKey("multiplayer.stopSleeping")));
+        //AARON changed the height value so the player can see their status while sleeping
         this.buttonList.add(new GuiButton(1, this.width / 2 - 100, this.height - 70, var1.translateKey("multiplayer.stopSleeping")));
+ 
     }
 
     /**

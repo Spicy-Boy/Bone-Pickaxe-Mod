@@ -60,21 +60,21 @@ public class FCBlockLeaves extends BlockLeaves
             }            
         }
         
-//        //AARON added this if block in order to allow random leaf drop
-//		  //AARON commented this out on Sock's behalf
-//        if ( !world.isRemote )
-//        {
-//            
-//            int iChanceOfSaplingDrop = 15;
-//
-//            if ( world.rand.nextInt( iChanceOfSaplingDrop ) == 0 )
-//            {
-//
-//                int iIdDropped = idDroppedExceptThisTimeItIsAStick( iMetadata, world.rand, iFortuneModifier );
-//                
-//                dropBlockAsItem_do( world, i, j, k, new ItemStack( iIdDropped, 1, 0) );
-//            }            
-//        }
+        //AARON added this if block in order to allow random leaf drop
+		//AARON commented this out on Sock's behalf
+        if ( !world.isRemote )
+        {
+            
+            int iChanceOfBranchDrop = 75; //original value was 15... tweaked to 75 to lower the chance of branch drops by a LOT
+
+            if ( world.rand.nextInt( iChanceOfBranchDrop ) == 0 )
+            {
+
+                int iIdDropped = idDroppedExceptThisTimeItIsAStick( iMetadata, world.rand, iFortuneModifier );
+                
+                dropBlockAsItem_do( world, i, j, k, new ItemStack( iIdDropped, 1, 0) );
+            }            
+        }
     }
     
     //AARON added this to satisfy Sock's desire to be creative
