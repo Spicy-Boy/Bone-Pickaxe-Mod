@@ -19,8 +19,6 @@ TODO: - Fixed/backported a fix for a bug that caused fireworks to crash the game
 
 TODO: - Fixed the lighting bug that caused hampers and such to look completely pitch black (thanks Dawn, Hiracho, and the CE team!!!)
 
-TODO: - Fixed a game bricking bug that created a ticking tile entity or something when using a piston shovel to pick up ash.
-
 TODO: - Added config/side mod to placing tools (the old way, rather than ctrl+click
 
 TODO: DETECT IF DAWN MOD IS INSTALLED TO PREVENT CRASH
@@ -30,16 +28,22 @@ TODO: DETECT IF DAWN MOD IS INSTALLED TO PREVENT CRASH
 
 - Added Hiracho's Dynamic Lighting addon for the sake of the server modpack!
         > Torches will emit light when held in the hand. Perfect for exploring the deep places of the world!
+        
+- Added the crafting table back to the creative menu
 
 - Changed (reduced) the chance of branches dropping from decaying leaves significantly. From my brief tests, a tree may drop just two branches now
 
 - Tweaked hunger system so that the player can jump and move around longer before being imobilized by hunger. (can jump during famished)
 
-- Tweaked hunger system so that the player starves to death when hunger bar is empty more slowly in general. 
+- Tweaked hunger system so that the player starves to death when hunger bar is empty more slowly in general.
         
 - Tweaked sleeping code internally to backport bug fixes from newer versions of CE
 
 - Tweaked the position of the wake up button (nudged upward) so that status can be viewed while laying down
+
+- Fixed (by backporting) the lighting bug that caused furnaces and hampers to appear pitch black
+
+- Fixed a crash that caused your save to brick if you attempted to piston shovel ash!
 
 ***
 DISCARDED IDEAS FROM V 2.0:
@@ -147,6 +151,16 @@ EntityPlayer
 EnumStatus
 FCBlockBedBase
 GuiSleepMP
+EntityRenderer
+(CHANGES for LIGHTING FIX below vvv)
+FCBlockFurnaceBrick
+FCBlockFurnaceBrickIdle
+FCUtilsPrimitiveGeometric
+RenderBlockUtils
+FCBlockWorkbench
+(CHANGES for FIREWORK FIX below vvv)
+WorldClient
+EntityFireworkStarterFX
 
 BASE CLASS OVERRIDES:
 FCBlockHempCrop -> BPMBlockHempCrop
