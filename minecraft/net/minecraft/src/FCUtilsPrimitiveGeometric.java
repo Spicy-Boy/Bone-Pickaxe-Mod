@@ -43,7 +43,10 @@ public abstract class FCUtilsPrimitiveGeometric
         float green = (float) (colorMultiplier >> 8 & 255) / 255F;
         float blue = (float) (colorMultiplier & 255) / 255F;
         
-        RenderBlocksUtils.setupColorMultiplier(block, renderBlocks.blockAccess, x, y, z, renderBlocks.hasOverrideBlockTexture(), red, green, blue);
+
+        //AARON changed this to fix the lighting bug
+        RenderBlocksUtils.setupColorMultiplierForceNoAO(block, renderBlocks.blockAccess, x, y, z, red, green, blue, true);   
+//        RenderBlocksUtils.setupColorMultiplier(block, renderBlocks.blockAccess, x, y, z, renderBlocks.hasOverrideBlockTexture(), red, green, blue);
         
         return RenderAsBlockWithColorMultiplier(renderBlocks, block, x, y, z, red, green, blue);
 	}

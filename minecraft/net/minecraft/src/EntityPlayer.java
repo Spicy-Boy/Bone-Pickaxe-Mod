@@ -29,6 +29,9 @@ public abstract class EntityPlayer extends EntityLiving implements ICommandSende
 
     /** The player's food stats. (See class FoodStats) */
     protected FoodStats foodStats = new FoodStats();
+    
+    //AARON added this in order to facilitate the dynamic light config
+    public boolean isDynamicLightingEnabled = BPM.instance.loadConfigProperties().get("enable_dynamic_lighting").equals("true");
 
     /**
      * Used to tell if the player pressed jump twice. If this is at 0 and it's pressed (And they are allowed to fly, as
@@ -406,7 +409,8 @@ public abstract class EntityPlayer extends EntityLiving implements ICommandSende
         			isholdingtorch =false;
         		}
         		
-                if (isholdingtorch) 
+        		//AARON added this config here to enable or disable Dynamic Lighting via config!
+                if (isholdingtorch && isDynamicLightingEnabled) 
                 {
                     FCUtilsBlockPos lightpos = new FCUtilsBlockPos(MathHelper.floor_double( posX ), 
                     		MathHelper.floor_double(boundingBox.maxY), MathHelper.floor_double( posZ));

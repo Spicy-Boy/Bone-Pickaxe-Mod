@@ -13,21 +13,19 @@ NOTE TO AARON:
 
 CHANGELOG V2.0
 
-TODO: - Added a new bedroll recipe: wool knit + wool knit + wool (unknit) / 2x feather for stuffing
-
-TODO: - Fixed/backported a fix for a bug that caused fireworks to crash the game.
-
-TODO: - Fixed the lighting bug that caused hampers and such to look completely pitch black (thanks Dawn, Hiracho, and the CE team!!!)
-
-TODO: - Added config/side mod to placing tools (the old way, rather than ctrl+click
-
 TODO: DETECT IF DAWN MOD IS INSTALLED TO PREVENT CRASH
         > Check SCDecoIntegration.java
+
+- Added a config option (see BPM.properties in the config folder) for placing tools with right click (rather than ctrl+right click)
+    TODO: Multiplayer type beat???
 
 - Added Hardcore Soaked, a change that makes sleeping under a rain storm less possible
 
 - Added Hiracho's Dynamic Lighting addon for the sake of the server modpack!
         > Torches will emit light when held in the hand. Perfect for exploring the deep places of the world!
+        > DL is disabled by default in the BPM config. Enable it by changing the configuration option to true
+        
+- Added two new bed roll crafting recipes involving feathers and unknit wool. Woo accessible sleeping bags!
         
 - Added the crafting table back to the creative menu
 
@@ -44,17 +42,6 @@ TODO: DETECT IF DAWN MOD IS INSTALLED TO PREVENT CRASH
 - Fixed (by backporting) the lighting bug that caused furnaces and hampers to appear pitch black
 
 - Fixed a crash that caused your save to brick if you attempted to piston shovel ash!
-
-***
-DISCARDED IDEAS FROM V 2.0:
-
-TODO: Add Pet Sounds CD
-
-TODO- Add config for branch dropping maybe? Or just disable it, who knows
-
-TODO- Added Yany's Hardcore Hell from Yany's Stuff&Things Addon
-        >https://www.sargunster.com/btwforum/viewtopic.php?t=9873&start=25
-        >Big shout out to Yany, creator of amazing addons
 
 ***
 CHANGELOG V 1.2
@@ -152,15 +139,16 @@ EnumStatus
 FCBlockBedBase
 GuiSleepMP
 EntityRenderer
-(CHANGES for LIGHTING FIX below vvv)
+-(CHANGES for LIGHTING FIX below vvv)
 FCBlockFurnaceBrick
 FCBlockFurnaceBrickIdle
 FCUtilsPrimitiveGeometric
 RenderBlockUtils
 FCBlockWorkbench
-(CHANGES for FIREWORK FIX below vvv)
+-(CHANGES for FIREWORK FIX below vvv)
 WorldClient
 EntityFireworkStarterFX
+FCItemTool
 
 BASE CLASS OVERRIDES:
 FCBlockHempCrop -> BPMBlockHempCrop
