@@ -31,17 +31,19 @@ public class BPM extends FCAddOn
 		
     	FCAddOnHandler.LogMessage(this.getName() + " uwu~ Bone Pickaxe Mod 2.0!");
 
-    	FCAddOnHandler.LogMessage(this.getName() + "isDLInstalled " + BPMDynamicLightIntegration.isDLInstalled());
+//    	FCAddOnHandler.LogMessage(this.getName() + "isDLInstalled " + BPMDynamicLightIntegration.isDLInstalled());
 
 	}
 	
 	@Override
 	public void PreInitialize() {
+//		System.out.println("KEK XD");
+//		System.out.println("KEK XD");
 		String propertyName1 = "place_tool_with_right_click";
 		registerProperty(propertyName1, "false"); //by default, my config for right click placing tools is off
 
 		String propertyName2 = "enable_dynamic_lighting";
-		registerProperty(propertyName2, "true"); //by default, my config for right click placing tools is off
+		registerProperty(propertyName2, "false"); //by default, my config for right click placing tools is off
 
 	}
 

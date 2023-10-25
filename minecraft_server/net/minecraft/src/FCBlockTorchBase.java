@@ -298,11 +298,5 @@ public class FCBlockTorchBase extends Block
     	return world.isRaining() && world.IsRainingAtPos( i, j, k );
     }
     
-//	//----------- Client Side Functionality -----------//
-//    
-//    @Override
-//    public boolean RenderBlock( RenderBlocks renderBlocks, int i, int j, int k )
-//    {
-//    	return renderBlocks.renderBlockTorch( this, i, j, k );
-//    }
+	//----------- Client Side Functionality -----------//
 }

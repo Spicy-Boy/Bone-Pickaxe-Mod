@@ -31,7 +31,7 @@ public class BPM extends FCAddOn
 		
     	FCAddOnHandler.LogMessage(this.getName() + " uwu~ Bone Pickaxe Mod 2.0!");
     	
-    	FCAddOnHandler.LogMessage(this.getName() + "isDLInstalled " + BPMDynamicLightIntegration.isDLInstalled());
+//    	FCAddOnHandler.LogMessage(this.getName() + "isDLInstalled " + BPMDynamicLightIntegration.isDLInstalled());
 
 	}
 	
