@@ -292,7 +292,7 @@ public class FoodStats
         {
             ++foodTimer;
 
-            //AARON edits this little value to make starvation take longer! Just like Gandhi.
+            //AARON edits this little value to make starvation take longer! Just like Ghandi.
             if ( foodTimer >= 200 )
             {
             	if ( iDifficulty > 0 )

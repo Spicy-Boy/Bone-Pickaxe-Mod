@@ -175,6 +175,18 @@ public class BPMRecipes extends FCRecipes
 		
 		addPistonPackingRecipe(BPMDefinitions.meatCube,
 				new ItemStack(FCBetterThanWolves.fcItemRawMysteryMeat, 9));
+		
+		//bedroll recipes
+		AddShapelessRecipe(new ItemStack(FCBetterThanWolves.fcItemBedroll), new Object[] {
+				new ItemStack(FCBetterThanWolves.fcItemWoolKnit, 1, m_iIgnoreMetadata),
+				new ItemStack(FCBetterThanWolves.fcItemWoolKnit, 1, m_iIgnoreMetadata),
+				new ItemStack(FCBetterThanWolves.fcItemWool, 1,  m_iIgnoreMetadata)});
+
+		AddShapelessRecipe(new ItemStack(FCBetterThanWolves.fcItemBedroll), new Object[] {
+				new ItemStack(FCBetterThanWolves.fcItemWoolKnit, 1, m_iIgnoreMetadata),
+				new ItemStack(FCBetterThanWolves.fcItemWoolKnit, 1, m_iIgnoreMetadata),
+				new ItemStack(Item.feather, 1),
+				new ItemStack(Item.feather, 1)});
 	}
 	
     public static void RemoveStokedCauldronRecipe( ItemStack itemStack, ItemStack inputStacks[] )

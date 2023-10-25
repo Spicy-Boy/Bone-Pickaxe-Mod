@@ -306,8 +306,8 @@ public abstract class EntityPlayer extends EntityLiving implements ICommandSende
                 else if (this.worldObj.isRaining() && this.worldObj.IsRainingAtPos( (int)Math.floor(this.posX), (int)this.posY + 1, (int)Math.floor(this.posZ) ))
                 {
                 	//testers VVV
-                	System.out.println("x:"+this.posX+"y:"+this.posY+"z:"+this.posZ);
-                	System.out.println("x:"+(int)this.posX+"y:"+(int)this.posY+"z:"+Math.floor(this.posZ));
+//                	System.out.println("x:"+this.posX+"y:"+this.posY+"z:"+this.posZ);
+//                	System.out.println("x:"+(int)this.posX+"y:"+(int)this.posY+"z:"+Math.floor(this.posZ));
                 	this.wakeUpPlayer(true, true, false);
                 }
             }

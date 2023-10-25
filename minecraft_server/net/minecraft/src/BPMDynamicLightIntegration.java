@@ -4,15 +4,15 @@ public class BPMDynamicLightIntegration
 {
 	private static boolean isDLIntalled = false;
 	public static FCAddOn DLMain = null;
-	
+
 	public static final String DL = "Hiracho's Dynamic Lighting";
-	
+
 	public static void init() {
 		try {
 			if (FCAddOnHandler.isModInstalled(DL)) {
 				DLMain = FCAddOnHandler.getModByName(DL);
 			}
-			
+
 			if (DLMain != null) {
 				isDLIntalled = true;
 			}
@@ -22,7 +22,7 @@ public class BPMDynamicLightIntegration
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static boolean isDLInstalled() {
 		return isDLIntalled;
 	}
