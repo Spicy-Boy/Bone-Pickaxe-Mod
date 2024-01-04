@@ -1,7 +1,7 @@
 # Bone-Pickaxe-Mod
-A mod for Better Than Wolves that adds new tools to the game. This is essentially a port of Super Better Than Wolves!
+A mod for Better Than Wolves that adds new tools to the game. 
 
-The aim of this version of SBTW is to be compatible with other addons. For example, Bone Pick Mod can be played with Deco and Better Terrain, Yany's Stuff & Things, and Sock's Crops.
+This project is essentially a port of Super Better Than Wolves! The aim is to make SBTW compatible with other addons. For example, Bone Pickaxe Mod can be played with Deco, Better Terrain, and Sock's Crops. Pre-2.0, it was also compatible with Yany's Stuff & Things.
 
 Official Forum Thread: https://sargunster.com/btwforum/viewtopic.php?t=10195
 
