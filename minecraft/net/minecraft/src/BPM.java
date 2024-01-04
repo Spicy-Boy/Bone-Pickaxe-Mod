@@ -42,7 +42,7 @@ public class BPM extends FCAddOn
 		registerProperty(propertyName1, "false"); //by default, my config for right click placing tools is off
 	
 		String propertyName2 = "enable_dynamic_lighting";
-		registerProperty(propertyName2, "true"); //by default, my config for right click placing tools is off
+		registerProperty(propertyName2, "true"); //by default, my config for DL is on
 
 	}
 

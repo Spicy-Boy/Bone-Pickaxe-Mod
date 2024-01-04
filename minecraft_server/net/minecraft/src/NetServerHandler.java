@@ -699,40 +699,76 @@ public class NetServerHandler extends NetHandler
         }
     }
 
-    /**
-     * runs registerPacket on the given Packet19EntityAction
-     */
-    public void handleEntityAction(Packet19EntityAction par1Packet19EntityAction)
-    {
-    	if (par1Packet19EntityAction.state == 1)
-        {
-            this.playerEntity.setSneaking(true);
-        }
-        else if (par1Packet19EntityAction.state == 2)
-        {
-            this.playerEntity.setSneaking(false);
-        }
-        else if (par1Packet19EntityAction.state == 4)
-        {
-            this.playerEntity.setSprinting(true);
-        }
-        else if (par1Packet19EntityAction.state == 5)
-        {
-            this.playerEntity.setSprinting(false);
-        }
-        else if (par1Packet19EntityAction.state == 3)
-        {
-            this.playerEntity.wakeUpPlayer(false, true, true);
-            this.hasMoved = false;
-        }
-        
-        if ((par1Packet19EntityAction.state & 8) == 8) {
-        	this.playerEntity.setUsingSpecialKey(true);
-        }
-        else {
-        	this.playerEntity.setUsingSpecialKey(false);
-        }
-    }
+    //AARON replaced this method to fix alt sprinting VVV
+//  /**
+//   * runs registerPacket on the given Packet19EntityAction
+//   */
+//  public void handleEntityAction(Packet19EntityAction par1Packet19EntityAction)
+//  {
+//  	if (par1Packet19EntityAction.state == 1)
+//      {
+//          this.playerEntity.setSneaking(true);
+//      }
+//      else if (par1Packet19EntityAction.state == 2)
+//      {
+//          this.playerEntity.setSneaking(false);
+//      }
+//      else if (par1Packet19EntityAction.state == 4)
+//      {
+//          this.playerEntity.setSprinting(true);
+//      }
+//      else if (par1Packet19EntityAction.state == 5)
+//      {
+//          this.playerEntity.setSprinting(false);
+//      }
+//      else if (par1Packet19EntityAction.state == 3)
+//      {
+//          this.playerEntity.wakeUpPlayer(false, true, true);
+//          this.hasMoved = false;
+//      }
+//      
+//      if ((par1Packet19EntityAction.state & 8) == 8) {
+//      	this.playerEntity.setUsingSpecialKey(true);
+//      }
+//      else {
+//      	this.playerEntity.setUsingSpecialKey(false);
+//      }
+//  }
+  /**
+   * runs registerPacket on the given Packet19EntityAction
+   */
+  public void handleEntityAction(Packet19EntityAction par1Packet19EntityAction)
+  {
+      int state = par1Packet19EntityAction.state & 7;
+  	if (state == 1)
+      {
+          this.playerEntity.setSneaking(true);
+      }
+      else if (state == 2)
+      {
+          this.playerEntity.setSneaking(false);
+      }
+      else if (state == 4)
+      {
+          this.playerEntity.setSprinting(true);
+      }
+      else if (state == 5)
+      {
+          this.playerEntity.setSprinting(false);
+      }
+      else if (state == 3)
+      {
+          this.playerEntity.wakeUpPlayer(false, true, true);
+          this.hasMoved = false;
+      }
+      
+      if ((par1Packet19EntityAction.state & 8) == 8) {
+      	this.playerEntity.setUsingSpecialKey(true);
+      }
+      else {
+      	this.playerEntity.setUsingSpecialKey(false);
+      }
+  }
 
     public void handleKickDisconnect(Packet255KickDisconnect par1Packet255KickDisconnect)
     {
