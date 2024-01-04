@@ -702,28 +702,64 @@ public class NetServerHandler extends NetHandler
         }
     }
 
+    //AARON replaced this method to fix alt sprinting VVV
+//    /**
+//     * runs registerPacket on the given Packet19EntityAction
+//     */
+//    public void handleEntityAction(Packet19EntityAction par1Packet19EntityAction)
+//    {
+//    	if (par1Packet19EntityAction.state == 1)
+//        {
+//            this.playerEntity.setSneaking(true);
+//        }
+//        else if (par1Packet19EntityAction.state == 2)
+//        {
+//            this.playerEntity.setSneaking(false);
+//        }
+//        else if (par1Packet19EntityAction.state == 4)
+//        {
+//            this.playerEntity.setSprinting(true);
+//        }
+//        else if (par1Packet19EntityAction.state == 5)
+//        {
+//            this.playerEntity.setSprinting(false);
+//        }
+//        else if (par1Packet19EntityAction.state == 3)
+//        {
+//            this.playerEntity.wakeUpPlayer(false, true, true);
+//            this.hasMoved = false;
+//        }
+//        
+//        if ((par1Packet19EntityAction.state & 8) == 8) {
+//        	this.playerEntity.setUsingSpecialKey(true);
+//        }
+//        else {
+//        	this.playerEntity.setUsingSpecialKey(false);
+//        }
+//    }
     /**
      * runs registerPacket on the given Packet19EntityAction
      */
     public void handleEntityAction(Packet19EntityAction par1Packet19EntityAction)
     {
-    	if (par1Packet19EntityAction.state == 1)
+        int state = par1Packet19EntityAction.state & 7;
+    	if (state == 1)
         {
             this.playerEntity.setSneaking(true);
         }
-        else if (par1Packet19EntityAction.state == 2)
+        else if (state == 2)
         {
             this.playerEntity.setSneaking(false);
         }
-        else if (par1Packet19EntityAction.state == 4)
+        else if (state == 4)
         {
             this.playerEntity.setSprinting(true);
         }
-        else if (par1Packet19EntityAction.state == 5)
+        else if (state == 5)
         {
             this.playerEntity.setSprinting(false);
         }
-        else if (par1Packet19EntityAction.state == 3)
+        else if (state == 3)
         {
             this.playerEntity.wakeUpPlayer(false, true, true);
             this.hasMoved = false;

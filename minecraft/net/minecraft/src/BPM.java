@@ -11,12 +11,12 @@ public class BPM extends FCAddOn
  * @author EpicAaron29 (aaron on the discord)
  *
  */
-
+	
 	public static BPM instance = new BPM();
 	
     private BPM() 
     {
-        super("uwu~ you play BTW???", ";)", "");
+        super("uwu~ Bone Pickaxe Mod 2.0!", ";)", "BPM");
     }
 
 	@Override
@@ -29,9 +29,23 @@ public class BPM extends FCAddOn
     	BPMDefinitions.addTileEntityDefinitions(); //for time cube
     	BPMRecipes.addRecipes();
 		
-    	FCAddOnHandler.LogMessage(this.getName() + " uwu~ you play BTW???");
+    	FCAddOnHandler.LogMessage(this.getName() + " uwu~ Bone Pickaxe Mod 2.0!");
+    	
+//    	FCAddOnHandler.LogMessage(this.getName() + "isDLInstalled " + BPMDynamicLightIntegration.isDLInstalled());
 
 	}
+	
+
+	@Override
+	public void PreInitialize() {
+		String propertyName1 = "place_tool_with_right_click";
+		registerProperty(propertyName1, "false"); //by default, my config for right click placing tools is off
+	
+		String propertyName2 = "enable_dynamic_lighting";
+		registerProperty(propertyName2, "true"); //by default, my config for DL is on
+
+	}
+
 
 	public String GetLanguageFilePrefix()
 	{
@@ -59,9 +73,14 @@ public class BPM extends FCAddOn
         }
 	}
 	
-	public void PostInitialize() {
-		//FCBetterThanWolves.fcBlockHempCrop.blockID, BPMBlockHempCrop.class, BPM.instance
-		//Block.replaceBlock(FCBetterThanWolves.fcBlockHempCrop.blockID, BPMBlockHempCrop.class, new String[] {"Stuff & Things"}, instance);
-	}
+//	public String getName()
+//	{
+//		return this.addonName;
+//	}
+	
+//	public void PostInitialize() {
+//		//FCBetterThanWolves.fcBlockHempCrop.blockID, BPMBlockHempCrop.class, BPM.instance
+//		//Block.replaceBlock(FCBetterThanWolves.fcBlockHempCrop.blockID, BPMBlockHempCrop.class, new String[] {"Stuff & Things"}, instance);
+//	}
 
 }

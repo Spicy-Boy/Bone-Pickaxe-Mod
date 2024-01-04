@@ -135,7 +135,9 @@ public abstract class FCItemTool extends Item implements FCIPlaceableAsItem
     public boolean onItemUse( ItemStack stack, EntityPlayer player, World world, int i, int j, int k, int iFacing, 
     		float fClickX, float fClickY, float fClickZ )
     {
-    	if (player.isUsingSpecialKey())
+    	if (player.isUsingSpecialKey() 
+    			//AARON added this check to add a config for the old right click place functionality
+    			|| (BPM.instance.loadConfigProperties().get("place_tool_with_right_click").equals("true") && !(player.getCurrentEquippedItem().getItem() instanceof FCItemSword)))
     	{
     		if ( player != null && player.canPlayerEdit( i, j, k, iFacing, stack ) && GetCanBePlacedAsBlock() )
     		{

@@ -29,6 +29,9 @@ public abstract class EntityPlayer extends EntityLiving implements ICommandSende
 
     /** The player's food stats. (See class FoodStats) */
     protected FoodStats foodStats = new FoodStats();
+    
+    //AARON added this in order to facilitate the dynamic light config
+    public boolean isDynamicLightingEnabled = BPM.instance.loadConfigProperties().get("enable_dynamic_lighting").equals("true");
 
     /**
      * Used to tell if the player pressed jump twice. If this is at 0 and it's pressed (And they are allowed to fly, as
@@ -58,6 +61,12 @@ public abstract class EntityPlayer extends EntityLiving implements ICommandSende
      * The chunk coordinates of the bed the player is in (null if player isn't in a bed).
      */
     public ChunkCoordinates playerLocation;
+    
+    //AARON ADDED in order to stop the player from slipping through walls. Follow these variables to see how I backported that shit
+    //sleep related
+    public ChunkCoordinates playerBedLocation;
+    public ChunkCoordinates playerBeforeAsleep;
+    
     private int sleepTimer;
     public float field_71079_bU;
     public float field_71082_cx;
@@ -115,6 +124,10 @@ public abstract class EntityPlayer extends EntityLiving implements ICommandSende
      * An instance of a fishing rod's hook. If this isn't null, the icon image of the fishing rod is slightly different
      */
     public EntityFishHook fishEntity = null;
+    
+    //Dynamic Lights TODO
+    private int dynamicLightUpdateTimer=0;
+    public boolean isholdingtorch =false;
 
     public EntityPlayer(World par1World)
     {
@@ -287,6 +300,16 @@ public abstract class EntityPlayer extends EntityLiving implements ICommandSende
                 {
                     this.wakeUpPlayer(false, true, true);
                 }
+                //AARON added this to wake the player if it starts raining
+                //sleep related
+                //be careful, the player location is not perfect on the bed and can be caught in the rain easily 
+                else if (this.worldObj.isRaining() && this.worldObj.IsRainingAtPos( (int)Math.floor(this.posX), (int)this.posY + 1, (int)Math.floor(this.posZ) ))
+                {
+                	//testers VVV
+//                	System.out.println("x:"+this.posX+"y:"+this.posY+"z:"+this.posZ);
+//                	System.out.println("x:"+(int)this.posX+"y:"+(int)this.posY+"z:"+Math.floor(this.posZ));
+                	this.wakeUpPlayer(true, true, false);
+                }
             }
         }
         else if (this.sleepTimer > 0)
@@ -368,7 +391,50 @@ public abstract class EntityPlayer extends EntityLiving implements ICommandSende
         // FCMOD: Added
         UpdateModStatusVariables();
         // END FCMOD
+        //Dynamic Lights TODO
+        if (!worldObj.isRemote)
+        {
+        	dynamicLightUpdateTimer++;
+        	if (isholdingtorch ||dynamicLightUpdateTimer >9)
+        	{
+        		ItemStack heldItem = getHeldItem();
+        		dynamicLightUpdateTimer=0;
+        		if (heldItem!= null && isDynamicLightSource(heldItem.itemID))
+        		{
+        			isholdingtorch =true;
+//        			System.out.println(this + " is holding " + getHeldItem());
+        		}
+        		else
+        		{
+        			isholdingtorch =false;
+        		}
+        		
+        		//AARON added this config here to enable or disable Dynamic Lighting via config!
+                if (isholdingtorch && isDynamicLightingEnabled) 
+                {
+                    FCUtilsBlockPos lightpos = new FCUtilsBlockPos(MathHelper.floor_double( posX ), 
+                    		MathHelper.floor_double(boundingBox.maxY), MathHelper.floor_double( posZ));
+                    if (worldObj.getBlockId(lightpos.i, lightpos.j, lightpos.k)==0)
+                    {
+                    worldObj.setBlock(lightpos.i, lightpos.j, lightpos.k, DLMain.lightsourceinvis.blockID,0 ,2);
+                    worldObj.scheduleBlockUpdate(lightpos.i, lightpos.j, lightpos.k, DLMain.lightsourceinvis.blockID, DLLightSource.lightSourceTickRate);
+                    }
+                }
+        	}
+        }
+
     }
+    
+    public boolean isDynamicLightSource(int itemID)
+    {
+//    	Block.blocksList[itemID].lightValue>0 TODO
+    	if(itemID==FCBetterThanWolves.fcBlockTorchNetherBurning.blockID || itemID==FCBetterThanWolves.fcBlockTorchFiniteBurning.blockID)
+    	{
+    		return true;
+    	}
+    	return false;
+    }
+    
 
     /**
      * Return the amount of time this entity should stay in a portal before being transported.
@@ -871,8 +937,12 @@ public abstract class EntityPlayer extends EntityLiving implements ICommandSende
 
         if (this.sleeping)
         {
-            this.playerLocation = new ChunkCoordinates(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY), MathHelper.floor_double(this.posZ));
-            this.wakeUpPlayer(true, true, false);
+//            this.playerLocation = new ChunkCoordinates(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY), MathHelper.floor_double(this.posZ));
+//            this.wakeUpPlayer(true, true, false);
+        	//AARON CHANGED for slip through walls sleep bug
+        	this.playerBedLocation = new ChunkCoordinates(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY), MathHelper.floor_double(this.posZ));
+
+        	this.wakeUpPlayer(true, true, false);
         }
 
         if (par1NBTTagCompound.hasKey("SpawnX") && par1NBTTagCompound.hasKey("SpawnY") && par1NBTTagCompound.hasKey("SpawnZ"))
@@ -1445,6 +1515,14 @@ public abstract class EntityPlayer extends EntityLiving implements ICommandSende
             {
                 return EnumStatus.NOT_POSSIBLE_NOW;
             }
+            
+            //AARON added this sleeping status to detect if rain is soaking the player
+//          if (this.worldObj.isRaining() && this.worldObj.IsRainingAtPos( par1, par2, par3 ))
+            if (this.worldObj.IsRainingAtPos( par1, par2 + 1, par3 ))
+            {
+//          	System.out.println("detecting SOAKED");
+            	return EnumStatus.TOO_WET;
+            }
 
             if (Math.abs(this.posX - (double)par1) > 3.0D || Math.abs(this.posY - (double)par2) > 2.0D || Math.abs(this.posZ - (double)par3) > 3.0D)
             {
@@ -1457,9 +1535,16 @@ public abstract class EntityPlayer extends EntityLiving implements ICommandSende
 
             if (!var8.isEmpty())
             {
-                return EnumStatus.NOT_SAFE;
+            	//AARON disabled this particular status because why not let players sleep even if a zombie is at the door?
+            	//prevents the MONSTER NEARBY status from preventing sleep
+//                return EnumStatus.NOT_SAFE;
+            	
             }
         }
+    	
+
+        //AARON ADDED THIS so that you can't flippy dip through walls after a sleep backported
+        this.playerBeforeAsleep = new ChunkCoordinates((int)posX, (int)posY, (int)posZ);
 
         this.setSize(0.2F, 0.2F);
         this.yOffset = 0.2F;
@@ -1499,7 +1584,10 @@ public abstract class EntityPlayer extends EntityLiving implements ICommandSende
 
         this.sleeping = true;
         this.sleepTimer = 0;
-        this.playerLocation = new ChunkCoordinates(par1, par2, par3);
+//        this.playerLocation = new ChunkCoordinates(par1, par2, par3);
+        //AARON slipping through walls sleep backported
+        this.playerBedLocation = new ChunkCoordinates(par1, par2, par3);
+        
         this.motionX = this.motionZ = this.motionY = 0.0D;
 
         if (!this.worldObj.isRemote)
@@ -1541,12 +1629,16 @@ public abstract class EntityPlayer extends EntityLiving implements ICommandSende
     {
         this.setSize(0.6F, 1.8F);
         this.resetHeight();
-        ChunkCoordinates var4 = this.playerLocation;
-        ChunkCoordinates var5 = this.playerLocation;
+//        ChunkCoordinates var4 = this.playerLocation;
+//        ChunkCoordinates var5 = this.playerLocation;
+        //AARON changed sleep backport fix
+        ChunkCoordinates var4 = this.playerBedLocation;
+        ChunkCoordinates var5 = this.playerBeforeAsleep;
 
         if (var4 != null && Block.blocksList[this.worldObj.getBlockId(var4.posX, var4.posY, var4.posZ)] instanceof FCBlockBedBase)
         {
             BlockBed.setBedOccupied(this.worldObj, var4.posX, var4.posY, var4.posZ, false);
+            //AARON made an note here in the SBTW EntityPlayer class, but nothing appears to be changed?
             var5 = BlockBed.getNearestEmptyChunkCoordinates(this.worldObj, var4.posX, var4.posY, var4.posZ, 0);
 
             if (var5 == null)
@@ -1579,7 +1671,9 @@ public abstract class EntityPlayer extends EntityLiving implements ICommandSende
      */
     private boolean isInBed()
     {
-        return Block.blocksList[this.worldObj.getBlockId(this.playerLocation.posX, this.playerLocation.posY, this.playerLocation.posZ)] instanceof FCBlockBedBase;
+    	//AARON MODIFIED this return to prevent being kicked out of bedroll
+//        return Block.blocksList[this.worldObj.getBlockId(this.playerLocation.posX, this.playerLocation.posY, this.playerLocation.posZ)] instanceof FCBlockBedBase;
+    	return Block.blocksList[this.worldObj.getBlockId(this.playerBedLocation.posX, this.playerBedLocation.posY, this.playerBedLocation.posZ)] instanceof FCBlockBedBase;
     }
 
     /**
@@ -1614,10 +1708,15 @@ public abstract class EntityPlayer extends EntityLiving implements ICommandSende
      */
     public float getBedOrientationInDegrees()
     {
-        if (this.playerLocation != null)
+//        if (this.playerLocation != null)
+    	//AARON changed to stop slipping through walls while sleep backported
+        if (this.playerBedLocation != null)
         {
-            int var1 = this.worldObj.getBlockMetadata(this.playerLocation.posX, this.playerLocation.posY, this.playerLocation.posZ);
-            int var2 = BlockBed.getDirection(var1);
+//            int var1 = this.worldObj.getBlockMetadata(this.playerLocation.posX, this.playerLocation.posY, this.playerLocation.posZ);
+           	//AARON here too... pretty much every instance of playerLocation is changed to playerBedLocation
+            int var1 = this.worldObj.getBlockMetadata(this.playerBedLocation.posX, this.playerBedLocation.posY, this.playerBedLocation.posZ);
+
+        	int var2 = BlockBed.getDirection(var1);
 
             switch (var2)
             {
@@ -2522,8 +2621,10 @@ public abstract class EntityPlayer extends EntityLiving implements ICommandSende
 	
 	@Override
     public boolean CanJump()
-    {		
-    	return health > 4 && foodStats.getFoodLevel() > 12 && (int)foodStats.getSaturationLevel() < 18;
+    {
+		//AARON changed: original values are health 4 and FoodLevel 12
+    	return health > 2 && foodStats.getFoodLevel() > 6 && (int)foodStats.getSaturationLevel() < 18;
+//    	return health > 4 && foodStats.getFoodLevel() > 12 && (int)foodStats.getSaturationLevel() < 18;
     }
 	
 	@Override

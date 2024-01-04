@@ -3,19 +3,46 @@ Started project 13 July, 2022
 Updated to 1.1 14 August, 2022
 Updated to 1.2 17 August, 2022
 Started 2.0 update 5 January, 2023
+Resumed working on 2.0 on 23 October, 2023
+Updated to 2.0 3 January, 2024
 
 CHANGELOG V2.0
 
-TODO- Added Yany's Hardcore Hell from Yany's Stuff&Things Addon
-        >https://www.sargunster.com/btwforum/viewtopic.php?t=9873&start=25
-        >Big shout out to Yany, creator of amazing addons
-        
-TODO- Add config for branch dropping maybe? Or just disable it, who knows
+- Added right click pickup to torches and bricks
 
-- Tweaked hunger system so that the player can jump and move around longer before starving.
-- Tweaked hunger system so that the player starves slower in general 
-TODO: DETECT IF DAWN MOD IS INSTALLED TO PREVENT CRASH
-        > Check SCDecoIntegration.java
+- Added Hardcore Hoofsies 2.0, a feature that makes cows demand more respect from players
+
+- Added a config option (see BPM.properties in the config folder) for placing tools with right click (rather than ctrl+right click)
+
+NOTE: this only works in singleplayer. You will crash if you try to use this feature in multiplayer if the server does not also enable it
+
+- Added Hardcore Soaking, a change that makes sleeping under a rain storm less possible
+
+- Added Hiracho's Dynamic Lighting addon for the sake of the server modpack!
+        > Torches will emit light when held in the hand. Perfect for exploring the deep places of the world!
+        > DL is enabled by default in the BPM config. Disable it by changing the configuration option to false
+        
+- Added two new bed roll crafting recipes involving feathers and unknit wool. Woo accessible sleeping bags!
+        
+- Added the crafting table back to the creative menu
+
+- Changed (reduced) the chance of branches dropping from decaying leaves significantly. From my brief tests, a tree may drop just two branches now
+
+- Changed/Tweaked hunger system so that the player can jump and move around longer before being immobilized by hunger. (can jump during famished)
+
+- Changed/Tweaked hunger system so that the player starves to death when hunger bar is empty more slowly in general.
+        
+- Changed/Tweaked sleeping code internally to backport bug fixes from newer versions of CE
+
+- Changed/Tweaked the position of the wake up button (nudged upward) so that status can be viewed while laying down
+
+- Fixed (by backporting) the lighting bug that caused furnaces and hampers to appear pitch black
+
+- Fixed (by backporting) a bug that caused alt-sprinting to consume less hunger than standard sprinting
+
+- Fixed (by backporting) villager trades not refreshing properly
+
+- Fixed a crash that caused your save to brick if you attempted to piston shovel ash!
 
 ***
 CHANGELOG V 1.2
@@ -104,10 +131,36 @@ FCBlockWeb
 V2.0
 EntityPlayerMP
 FCBlockLeaves (again to change branch drops)
+FCBlockTorchBase (Hiracho addon)
+(CHANGES for BED FIX below vvv)
+MinecraftServer
+BlockBed
+EntityPlayer
+EnumStatus
+FCBlockBedBase
+GuiSleepMP
+EntityRenderer
+-(CHANGES for LIGHTING FIX below vvv)
+FCBlockFurnaceBrick
+FCBlockFurnaceBrickIdle
+FCUtilsPrimitiveGeometric
+RenderBlockUtils
+FCBlockWorkbench
+-(CHANGES for FIREWORK FIX below vvv)
+WorldClient
+EntityFireworkStarterFX
+FCItemTool
+FCEntityCow
+FCEntityVillager
+FCBlockCookedBrick
+FCBlockTorchFiniteBurning
+FCTileEntityTorchFinite
+FCBlockTorchFiniteUnlit
+FCBlockTorchNetherUnlit
+FCBlockTorchNetherLit
 
 BASE CLASS OVERRIDES:
 FCBlockHempCrop -> BPMBlockHempCrop
-
 
 ~~~~~~~~~~~~~~~~~
 

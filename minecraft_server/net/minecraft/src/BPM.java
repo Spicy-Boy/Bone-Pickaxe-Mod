@@ -16,7 +16,7 @@ public class BPM extends FCAddOn
 	
     private BPM() 
     {
-        super("uwu~ you play BTW???", ";)", "");
+    	super("uwu~ Bone Pickaxe Mod 2.0!", ";)", "BPM");
     }
 
 	@Override
@@ -29,7 +29,21 @@ public class BPM extends FCAddOn
     	BPMDefinitions.addTileEntityDefinitions(); //for time cube
     	BPMRecipes.addRecipes();
 		
-    	FCAddOnHandler.LogMessage(this.getName() + " uwu~ you play BTW???");
+    	FCAddOnHandler.LogMessage(this.getName() + " uwu~ Bone Pickaxe Mod 2.0!");
+
+//    	FCAddOnHandler.LogMessage(this.getName() + "isDLInstalled " + BPMDynamicLightIntegration.isDLInstalled());
+
+	}
+	
+	@Override
+	public void PreInitialize() {
+//		System.out.println("KEK XD");
+//		System.out.println("KEK XD");
+		String propertyName1 = "place_tool_with_right_click";
+		registerProperty(propertyName1, "false"); //by default, my config for right click placing tools is off
+
+		String propertyName2 = "enable_dynamic_lighting";
+		registerProperty(propertyName2, "false"); //by default, my config for right click placing tools is off
 
 	}
 
@@ -57,10 +71,11 @@ public class BPM extends FCAddOn
             int zPos = z + rand.nextInt(16) + 8;
             this.branchGen.generate(world, rand, xPos, yPos, zPos);
         }
-	}	@Override
-	public void PostInitialize() {
-		//FCBetterThanWolves.fcBlockHempCrop.blockID, BPMBlockHempCrop.class, BPM.instance
-		Block.replaceBlock(FCBetterThanWolves.fcBlockHempCrop.blockID, BPMBlockHempCrop.class, new String[] {"Stuff & Things"}, instance);
-	}
+	}	
+//	@Override
+//	public void PostInitialize() {
+//		//FCBetterThanWolves.fcBlockHempCrop.blockID, BPMBlockHempCrop.class, BPM.instance
+//		Block.replaceBlock(FCBetterThanWolves.fcBlockHempCrop.blockID, BPMBlockHempCrop.class, new String[] {"Stuff & Things"}, instance);
+//	}
 
 }
